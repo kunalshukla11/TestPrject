@@ -1,1 +1,1 @@
-project for normal learning java 8 functionalities
+project for normal learning java 8 functionalities d
