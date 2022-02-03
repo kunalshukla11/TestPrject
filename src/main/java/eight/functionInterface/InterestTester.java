@@ -1,9 +1,11 @@
 package eight.functionInterface;
 
+import eight.functions.BinaryFunctions;
+
 import java.util.Arrays;
 import java.util.List;
 
-public class InterestTester {
+public class InterestTester  {
 	public static void main(String args[]) {
 
 		List<Float> amounts = Arrays.asList(20000f,35000f,40000f,45000f);
