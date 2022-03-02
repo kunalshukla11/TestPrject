@@ -1,4 +1,4 @@
-package eight.generics;
+package eight.domain;
 
 public class Car {
     private String name;

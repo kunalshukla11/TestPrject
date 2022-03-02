@@ -1,6 +1,4 @@
-package eight.srteams;
-
-import javafx.util.Builder;
+package eight.domain;
 
 import java.util.Objects;
 
@@ -26,6 +24,9 @@ public class Employee {
 
     }
 
+    public Employee() {
+
+    }
 
 
     @Override
