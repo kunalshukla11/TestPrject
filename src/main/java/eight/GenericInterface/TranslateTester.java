@@ -14,7 +14,7 @@ public class TranslateTester {
         person.setName("kunal");
         person.setAge(12);
         Employee employee= personToEmployeeTranslator.translate(person);
-        System.out.println("got emp with name " +employee.getName());
+        System.out.println("got emp with name   " +employee.getName());
 
 
     }
