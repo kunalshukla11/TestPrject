@@ -1,1 +1,0 @@
-project for normal learning java 8 functionalities k b
