@@ -4,10 +4,8 @@ package eight.srteams;
 
 import eight.domain.Employee;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
@@ -19,7 +17,8 @@ public class StreamTest {
     public static void main(String args[]) {
 
 
-        List<Employee> employeeList = new StreamTest().createEmployeeList();
+        List<Employee> employeeList = createEmployeeList();
+        String[] duplicateNames = createStringArray();
 
 
 
@@ -66,13 +65,48 @@ public class StreamTest {
         Map<Integer, Employee> employeeMap = employeeList.stream().collect(Collectors.toMap(e->e.getId(), e->e));
         System.out.println("Employee Map------------->>"+employeeMap);
 
+        /**
+         * Convert into Map using Collectors.groupingBy
+         */
+        Map<Object, List<Employee>> employeeAgeMap = employeeList.stream().collect(Collectors.groupingBy(employee -> employee.getAge()));
+        System.out.println("Employee  Age Map------------->>"+employeeAgeMap);
+
+        /**
+         * Get total age of all employee by sum
+         */
+         Integer age = employeeList.stream().mapToInt(x-> x.getAge()).sum();
+        System.out.println("Age sum using sum-->" +age);
+
+        /**
+         * Get total age of all employee reduce
+         */
+        Integer ageSumByReduce = employeeList.stream().map(employee -> employee.getAge()).reduce(0,(a, b)-> a+b);
+        System.out.println("Age sum using reduce -->" +ageSumByReduce);
+
+        ///////////////////////////////ArrayOperations/////////////////////////
+        /**
+         * Using Collectors.joining
+         */
+        String nameWithHyphens = Arrays.stream(duplicateNames).collect(Collectors.joining("--"));
+        System.out.println("Name with Hyphnes--"+ nameWithHyphens);
+
+
+
+        /**
+         * Convert into Map<String,Long> use grouping by to create map
+         * Get count of names which are duplicate
+         */
+
+        Map<String ,Long> nameMap= Arrays.stream(duplicateNames).filter(x-> Collections.frequency(Arrays.asList(duplicateNames), x)>1).collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+        System.out.println("Name map with duplicate count------>" +nameMap);
+
 
 
 
     }
 
 
-    public  List<Employee> createEmployeeList() {
+    public static List<Employee> createEmployeeList() {
         List<Employee> employeeList = new ArrayList<>();
         employeeList.add(new Employee(21, "ramesh", 2000d ,1));
         employeeList.add(new Employee(22, "max", 3500d,2));
@@ -82,6 +116,10 @@ public class StreamTest {
         return employeeList;
 
     }
+     public static String[] createStringArray(){
+         String [] duplicateName = {"ram", "ram", "mohon","mohon","mohon","rahul"};
+         return duplicateName;
+     }
 
 
 }

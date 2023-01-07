@@ -9,5 +9,6 @@ public class ListCheck {
         List<String > name= new ArrayList<>(Arrays.asList("Ram", "Mahesh"));
         name.remove("Ram");
         name.forEach(s -> System.out.println(s));
+
     }
 }
