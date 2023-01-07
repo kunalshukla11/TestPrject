@@ -8,15 +8,15 @@ import java.util.Set;
 public class Practice {
     public static void main(String[] args) {
         String s = "mmdakkbdd";
-        char[] sarr=s.toCharArray();
+        char[] SAR=s.toCharArray();
         Set<Character> repeated = new HashSet<>();
 
 
         List<Character> nonRepeated=new ArrayList<>();
 
 
-        for (int i =0;i<sarr.length;i++){
-            char c= sarr[i];
+        for (int i =0;i<SAR.length;i++){
+            char c= SAR[i];
             if(repeated.contains(c)){
                 continue;
             }
